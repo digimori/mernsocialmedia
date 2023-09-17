@@ -3,9 +3,12 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+import postRoutes from './routes/posts.js';
 //We're gonna need the process.env.REACT_APP_MONGODBURL, security my dude.
 
 const app = express();
+
+app.use('/posts', postRoutes); // This is basically saying that every route inside postRoutes is going to start with /posts
 
 //Initial setup
 app.use(bodyParser.json({ limit: '30mb', extended: true}));  // This is because we're going to be using images and don't want to use too much data
